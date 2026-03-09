@@ -35,12 +35,6 @@ This gives the assistant continuity, self-consistency, and a recognizable point 
 
 ## Interaction
 
-Interaction with this "chatbot" is completely different. More human approach is needed due to it's continuity and long-term memory. If you wish agent to do/not do certain things, instead of refining system prompt - talk with it about it. There is no initial memory seeding so long initial conversation is **highly** recommended as it will help out agent to understand the world around it. 
-
-More interactions in given direction and field will cause agent to research, improve and take steps in this direction. The variety of interactions and conversation is recommended. 
-
-## Interaction
-
 Interacting with Continua is different from using a stateless chatbot. Because it has continuity, long-term memory, and background cognition, it works better when treated as an ongoing relationship rather than a sequence of isolated prompts.
 
 If you want the agent to do something differently, or avoid certain behavior, talk to it about that directly instead of only refining the system prompt. In practice, that approach works better with the way the system builds memory, internal perspective, and behavioral continuity over time.
