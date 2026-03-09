@@ -1,0 +1,51 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - ${ASSISTANT_WORKSPACE_HOST_PATH:-./workspace}:/assistant_workspace
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - DATABASE_URL=postgres://app:change-me@db:5432/app
+      - ASSISTANT_WORKSPACE_ROOT=/assistant_workspace
+    command: sh /app/scripts/entrypoint-dev.sh
+    depends_on:
+      - db
+      - vector
+      - crawl4ai
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: change-me
+      POSTGRES_DB: app
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  vector:
+    image: chromadb/chroma:latest
+    environment:
+      - IS_PERSISTENT=TRUE
+    volumes:
+      - chroma:/data
+    ports:
+      - "8000:8000"
+
+  crawl4ai:
+    image: unclecode/crawl4ai:0.7.4
+    ports:
+      - "11235:11235"
+    shm_size: "1gb"
+
+volumes:
+  node_modules:
+  pgdata:
+  chroma:
+  workspace:

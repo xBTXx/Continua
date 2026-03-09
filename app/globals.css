@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #eef4ff;
+  --surface: #fbfdff;
+  --ink: #0c1728;
+  --muted: #4f6280;
+  --green-300: #79e8db;
+  --green-400: #30cab7;
+  --green-500: #149f93;
+  --green-600: #0f6f67;
+  --ring: rgba(20, 159, 147, 0.35);
+  --shadow: 0 22px 46px rgba(31, 58, 97, 0.16);
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-fraunces);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-space-grotesk);
+}
+
+body {
+  background:
+    radial-gradient(circle at 14% 8%, rgba(124, 187, 255, 0.22), transparent 42%),
+    radial-gradient(circle at 85% 6%, rgba(109, 233, 215, 0.2), transparent 36%),
+    linear-gradient(180deg, #eef4ff 0%, #eaf4ff 60%, #edf8ff 100%);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 120% 50%;
+  }
+}
+
+@keyframes dot-ellipsis {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 4ch;
+  }
+}
+
+@keyframes memory-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  35% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.7s ease both;
+}
+
+.animate-shimmer {
+  background-size: 200% 200%;
+  animation: shimmer 6s ease infinite;
+}
+
+.chat-typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre;
+  letter-spacing: 0.2em;
+  width: 0ch;
+  animation: dot-ellipsis 1.2s steps(4, end) infinite;
+}
+
+.personal-memory-pulse {
+  position: relative;
+  height: 10px;
+  width: 10px;
+  border-radius: 9999px;
+  background: var(--green-500);
+  box-shadow: 0 0 0 6px rgba(20, 159, 147, 0.14);
+}
+
+.personal-memory-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid rgba(20, 159, 147, 0.35);
+  animation: memory-pulse 1.6s ease-out;
+}
+
+.chat-bubble {
+  word-break: break-word;
+}
+
+.chat-markdown {
+  color: inherit;
+}
+
+.chat-markdown > * {
+  margin: 0;
+}
+
+.chat-markdown > * + * {
+  margin-top: 0.75rem;
+}
+
+.chat-markdown strong {
+  font-weight: 600;
+}
+
+.chat-markdown em {
+  font-style: italic;
+}
+
+.chat-markdown ul,
+.chat-markdown ol {
+  padding-left: 1.25rem;
+}
+
+.chat-markdown li + li {
+  margin-top: 0.35rem;
+}
+
+.chat-markdown a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-bubble-assistant .chat-markdown a {
+  color: var(--green-600);
+}
+
+.chat-markdown code {
+  border-radius: 0.5rem;
+  background: rgba(12, 23, 40, 0.08);
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+
+.chat-bubble-user .chat-markdown code {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.chat-markdown pre {
+  border-radius: 0.9rem;
+  background: rgba(12, 23, 40, 0.08);
+  padding: 0.8rem 1rem;
+  overflow: auto;
+}
+
+.chat-bubble-user .chat-markdown pre {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.chat-markdown blockquote {
+  border-left: 3px solid var(--green-400);
+  padding-left: 0.75rem;
+  color: var(--muted);
+}
+
+.chat-bubble-user .chat-markdown blockquote {
+  border-left-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+}

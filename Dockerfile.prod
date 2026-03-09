@@ -1,0 +1,31 @@
+FROM node:24.12.0-bookworm
+
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    pandoc \
+    python3 \
+    python3-pip \
+    python3-venv \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+ARG NEXT_PUBLIC_BASE_PATH=
+ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
+
+RUN python3 -m venv /opt/arxiv-venv \
+  && /opt/arxiv-venv/bin/pip install --no-cache-dir -r /app/scripts/requirements-arxiv.txt
+
+ENV ARXIV_PYTHON_BIN=/opt/arxiv-venv/bin/python
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start", "--", "-H", "0.0.0.0", "-p", "3000"]

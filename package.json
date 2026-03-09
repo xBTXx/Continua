@@ -1,0 +1,38 @@
+{
+  "name": "continua",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "memory:smoke": "node scripts/memory-loop-smoke.mjs",
+    "mcp:email": "node mcp/email-server/server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "fast-xml-parser": "^4.5.4",
+    "imapflow": "^1.0.0",
+    "mailparser": "^3.9.4",
+    "mcp-crawl4ai-ts": "^3.0.2",
+    "next": "^16.1.6",
+    "nodemailer": "^8.0.2",
+    "pg": "^8.16.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.16.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5.9.3"
+  }
+}

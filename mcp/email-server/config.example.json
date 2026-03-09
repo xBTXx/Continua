@@ -1,0 +1,29 @@
+{
+  "default_account_id": "assistant",
+  "accounts": [
+    {
+      "id": "assistant",
+      "type": "imap_smtp",
+      "email": "assistant@example.com",
+      "display_name": "Assistant",
+      "imap": {
+        "host": "imap.example.com",
+        "port": 993,
+        "secure": true,
+        "drafts_folder": "Drafts",
+        "sent_folder": "Sent"
+      },
+      "smtp": {
+        "host": "smtp.example.com",
+        "port": 465,
+        "secure": true
+      }
+    },
+    {
+      "id": "owner",
+      "type": "outlook_graph",
+      "email": "owner@example.com",
+      "display_name": "Operator"
+    }
+  ]
+}

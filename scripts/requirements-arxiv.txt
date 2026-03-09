@@ -1,0 +1,3 @@
+pymupdf
+pdfminer.six
+pylatexenc
