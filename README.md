@@ -2,7 +2,7 @@
 
 > **A local-first AI assistant with persistent memory, autonomous IDLE cognition, and tool-using agency.**
 
-This project is not designed as a request-only chatbot. It is designed as a continuously updating cognitive system:
+This project is not designed as a request-only chatbot. It is human brain inspired continuously updating cognitive system:
 - It remembers users and context through long-term memory.
 - It runs an internal IDLE loop between chats.
 - It can escalate internal thoughts into autonomous workspace sessions.
@@ -30,6 +30,22 @@ The key innovation is not just memory retrieval. It is the combination of:
 - and controlled autonomous execution.
 
 This gives the assistant continuity, self-consistency, and a recognizable point of view over time.
+
+---
+
+## Interaction
+
+Interaction with this "chatbot" is completely different. More human approach is needed due to it's continuity and long-term memory. If you wish agent to do/not do certain things, instead of refining system prompt - talk with it about it. There is no initial memory seeding so long initial conversation is **highly** recommended as it will help out agent to understand the world around it. 
+
+More interactions in given direction and field will cause agent to research, improve and take steps in this direction. The variety of interactions and conversation is recommended. 
+
+## Interaction
+
+Interacting with Continua is different from using a stateless chatbot. Because it has continuity, long-term memory, and background cognition, it works better when treated as an ongoing relationship rather than a sequence of isolated prompts.
+
+If you want the agent to do something differently, or avoid certain behavior, talk to it about that directly instead of only refining the system prompt. In practice, that approach works better with the way the system builds memory, internal perspective, and behavioral continuity over time.
+
+There is no large predefined memory seed at startup, so a longer initial conversation is strongly recommended. Early interaction helps the system build context about you, your priorities, and the world it is operating in. Sustained interaction in a specific direction tends to reinforce that direction. If you repeatedly explore a topic, workflow, or area of responsibility, the agent is more likely to research it further, improve within that domain, and take more coherent steps there over time. Broad, varied conversation is also useful because it gives the system a richer base of memories and associations to draw from.
 
 ---
 
