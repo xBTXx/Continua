@@ -332,12 +332,5 @@ App URL: `http://localhost:3000`
 
 ---
 
-## Contributing
-1. Fork the repository.
-2. Create a branch: `git checkout -b feature/amazing-feature`
-3. Commit changes.
-4. Push branch.
-5. Open a pull request.
-
 ## License
 MIT
