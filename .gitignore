@@ -24,15 +24,19 @@
 .DS_Store
 *.pem
 /workspace/
+/assistant_workspace/
 /samantha_workspace/
 /.ssef/
 /Docs/
+/.idea/
+/.vscode/
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+docker-compose.override.yml
 
 # env files (can opt-in for committing if needed)
 .env*

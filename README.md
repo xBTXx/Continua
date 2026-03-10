@@ -2,6 +2,61 @@
 
 > **A local-first AI assistant with persistent memory, autonomous IDLE cognition, and tool-using agency.**
 
+## Quick Start
+
+This repository is designed to run locally with Docker Compose.
+
+### Requirements
+- Docker Desktop or Docker Engine with Compose support
+- An OpenRouter API key
+
+### 1) Clone
+```bash
+git clone https://github.com/your-org/your-repo.git
+cd your-repo
+```
+
+### 2) Create your local env file
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and replace these placeholders before starting:
+- `OPENROUTER_API_KEY`
+- `AUTH_BOOTSTRAP_PASSWORD`
+- `AUTH_SESSION_SECRET`
+
+You can leave optional integrations such as Outlook and Google Maps unset until you want those features.
+
+### 3) Build and start
+```bash
+docker compose build
+docker compose up -d
+```
+
+### 4) Open the app
+- App URL: `http://localhost:3000`
+- Login URL: `http://localhost:3000/login`
+- Default username: `admin`
+- Password: the value you set for `AUTH_BOOTSTRAP_PASSWORD`
+
+### 5) Useful commands
+```bash
+docker compose logs -f web
+docker compose down
+```
+
+### Included services
+- `web`: Next.js app on `http://localhost:3000`
+- `db`: PostgreSQL on `localhost:5432`
+- `vector`: ChromaDB on `localhost:8000`
+- `crawl4ai`: Crawl4AI on `localhost:11235`
+
+### Local data
+- PostgreSQL and ChromaDB data are stored in Docker volumes.
+- The assistant workspace is bind-mounted from `./workspace`.
+- `.env` is intentionally ignored by git.
+
 This project is not designed as a request-only chatbot. It is human brain inspired continuously updating cognitive system:
 - It remembers users and context through long-term memory.
 - It runs an internal IDLE loop between chats.
@@ -270,12 +325,12 @@ Result: context stays relevant and durable across sessions.
 
 ---
 
-## Getting Started
+## Detailed Setup
 
 ### Prerequisites
 - Docker + Docker Compose
 - OpenRouter API key
-- Crawl4AI server (service included in `docker-compose.yml`)
+- Crawl4AI server (already included in `docker-compose.yml`)
 
 ### 1) Install
 ```bash
@@ -292,18 +347,41 @@ cp .env.example .env
 
 Then fill in the placeholder values for secrets and any operator-specific URLs. The template is sectioned by subsystem (`OpenRouter`, `storage`, `SSEF`, `retrieval`, `IDLE`, `email`, `workspace`, and tool integrations) so contributors can get from clone to first boot without hunting through the codebase.
 
+At minimum, replace the placeholder `OPENROUTER_API_KEY`, `AUTH_SESSION_SECRET`, and the default bootstrap password before you rely on the instance.
+
 ### 3) Email config (optional)
 ```bash
 cp mcp/email-server/config.example.json mcp/email-server/config.json
 ```
 Then edit `mcp/email-server/config.json`.
 
-### 4) Launch
+### 4) Build + launch
 ```bash
-docker compose up
+docker compose build
+docker compose up -d
 ```
 
 App URL: `http://localhost:3000`
+Login URL: `http://localhost:3000/login`
+
+The compose stack starts:
+- the Next.js app on port `3000`
+- PostgreSQL on port `5432`
+- ChromaDB on port `8000`
+- Crawl4AI on port `11235`
+
+To stop it later:
+
+```bash
+docker compose down
+```
+
+To rebuild after changing dependencies or the Docker image:
+
+```bash
+docker compose build --no-cache
+docker compose up -d
+```
 
 ---
 
